@@ -1,6 +1,7 @@
 *nomad.txt* Assists you in running Vim in remote tmux sessions.
 
 Author:  Bastian Winkler <buz@netbuz.org>
+Version: 0.1
 Repo:    https://github.com/buztard/vim-nomad
 License: Same terms as Vim itself (see |license|)
 
