@@ -6,7 +6,7 @@ the running session and resume it later without leaving Vim. This is great in
 situations where you login with ssh into your development machine at work or
 your server to continue coding after you changed your location.
 But suddenly, when you try to access a git+ssh remote (maybe through tpope's
-excellent [fugitive][https://github.com/tpope/vim-fugitive] plugin) or access
+excellent [fugitive](https://github.com/tpope/vim-fugitive) plugin) or access
 the `quotestar` or `quoteplus` registers, things won't work as expected because
 with a new ssh connection some of your environment variables changed and Vim
 doesn't know about it.
@@ -18,7 +18,7 @@ Vim.
 Installation
 ------------
 If you don't have a preferred installation method, I recommend installing
-[pathogen.vim][https://gitub.com/tpope/vim-pathogen], and then simply copy and
+[pathogen.vim](https://gitub.com/tpope/vim-pathogen), and then simply copy and
 paste:
 
 ``
