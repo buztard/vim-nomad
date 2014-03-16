@@ -1,0 +1,61 @@
+*nomad.txt* Assists you in running Vim in remote tmux sessions.
+
+Author:  Bastian Winkler <buz@netbuz.org>
+Repo:    https://github.com/buztard/vim-nomad
+License: Same terms as Vim itself (see |license|)
+
+INTRODUCTION                                                *nomad*
+
+Using Vim in a remote tmux session is very convenient, because you can detach
+the running session and resume it later without leaving Vim. This is great in
+situations where you login with ssh into your development machine at work or
+your server to continue coding after you changed your location.
+But suddenly, when you try to access a git+ssh remote (maybe through tpope's
+excellent fugitive plugin) or access the |quotestar| or |quoteplus| registers,
+things won't work as expected because with a new ssh connection some of your
+environment variables changed and Vim doesn't know about it.
+Fortunately tmux knows about these changes and this is where the |nomad|
+plugin kicks in. It queries tmux for the new values and updates your
+environment in Vim.
+
+
+COMMANDS                                                    *nomad-commands*
+
+:UpdateEnv [arguments]                                      *:UpdateEnv*
+
+Updates the given environment variables in your running Vim instance. If no
+arguments are given, either the variables named in
+|g:nomad_default_variables| or all variables reported by
+'tmux show-environment' are updated.
+
+
+OPTIONS                                                     *nomad-options*
+
+                                                    *g:nomad_default_variables*
+Sets a list of environment variables that are used when no aruments are given
+to |:UpdateEnv|. This variable is empty by default, so all all
+environment variables are updated. Example:
+>
+ let g:nomad_default_variables = ['DISPLAY', 'SSH_AUTH_SOCK']
+<
+
+                                                    *g:nomad_reconnect_display*
+Try to reconnect to the X11 server after running |:UpdateEnv|. Otherwise you
+probably won't be able to access the |quotestar| and |quoteplus| registers
+anymore. This option is enabled by default.
+>
+ let g:nomad_reconnect_display = 1
+<
+
+HINTS                                                       *normad-hints*
+
+To be able to use your ssh-agent and your X11 clipboards over a ssh connection
+you need to put the following options in your $HOME/.ssh/config >
+
+ ForwardAgent yes
+ ForwardX11 yes
+>
+For more information about your system clipboards, see Drew Neil's screencast
+at http://vimcasts.org/episodes/accessing-the-system-clipboard-from-vim/
+
+vim:tw=78:et:ft=help
