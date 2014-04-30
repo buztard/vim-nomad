@@ -1,7 +1,7 @@
 " nomad.vim
 " Author:  Bastian Winkler <buz@netbuz.org>
 " Repo:    https://github.com/buztard/vim-nomad
-" Version: 0.1
+" Version: 0.2
 " Licence: Same terms as Vim itself
 
 if exists("g:autoloaded_nomad") || !executable('tmux')
