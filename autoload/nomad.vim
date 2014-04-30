@@ -21,8 +21,6 @@ function! nomad#get_env() abort
 	    " Vim cannot remove environment variables, skip them
             continue
 	endif
-	" let name = matchstr(pair, '^\w\+\ze=')
-	" let value = matchstr(pair, '^\w\+=\zs.*\ze')
 	let var = split(pair, '=')
 	let name = var[0]
 	let value = join(var[1:], '=')
@@ -34,9 +32,6 @@ endfunction
 function! nomad#complete(A, L, P) abort
     let env = nomad#get_env()
     let matches = []
-    echom a:A
-    echom a:L
-    echom a:P
     for name in sort(keys(env))
 	if (len(a:A) == 0 || match(name, a:A) == 0) && match(a:L, '\<'.name.'\>') == -1
 	    let matches += [name]
@@ -68,7 +63,6 @@ function! nomad#update_env(arg)
 	    continue
 	endif
         execute "let $".name." = '".env[name]."'"
-        " echom "Updated ".name." = '".env[name]."'"
     endfor
     if g:nomad_reconnect_display == 1
 	" Small workaround to reconnect to the X display
