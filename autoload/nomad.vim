@@ -58,7 +58,7 @@ function! nomad#update_env(arg)
     for name in vars
 	if !has_key(env, name)
 	    echohl WarningMsg
-	    echo "Tmux doesn't provide '" . name . "' variable'"
+	    echom "Tmux doesn't provide '" . name . "' variable'"
 	    echohl None
 	    continue
 	endif
